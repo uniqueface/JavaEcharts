@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.koali.dao.AnHuiDao">
+<select id="getAll" parameterType="String" resultType="com.koali.model.AnHui">
+        SELECT * FROM shanghai
+        WHERE job_name like concat('%',#{name},'%')
+    </select>
+
+    <select id="getLeibie" resultType="java.util.HashMap">
+        select leibie,count(*) as counts
+        from shanghai group by leibie
+        having counts>300
+    </select>
+    <select id="getGongZi" resultType="java.util.HashMap">
+        select leibie,avg(zuidi)as zuidi,Avg(zuigao)as zuigao
+        from shanghai group by leibie
+        having count(*)>500
+
+    </select>
+    <select id="getLeibieS" resultType="java.util.HashMap">
+        select leibie,count(*) as counts
+        from beijing group by leibie
+        having counts>300
+    </select>
+    <select id="getGongZiS" resultType="java.util.HashMap">
+        select leibie,avg(zuidi)as zuidi,Avg(zuigao)as zuigao
+        from beijing group by leibie
+        having count(*)>500
+
+    </select>
+
+    <select id="getLeiShen" resultType="java.util.HashMap">
+        select leibie,count(*) as counts
+        from shenzhen group by leibie
+        having counts>300
+    </select>
+    <select id="getGongShen" resultType="java.util.HashMap">
+        select leibie,avg(zuidi)as zuidi,Avg(zuigao)as zuigao
+        from shenzhen group by leibie
+        having count(*)>500
+
+    </select>
+    <select id="getLeiHang" resultType="java.util.HashMap">
+        select leibie,count(*) as counts
+        from hangzhou group by leibie
+        having counts>300
+    </select>
+    <select id="getGongHang" resultType="java.util.HashMap">
+        select leibie,avg(zuidi)as zuidi,Avg(zuigao)as zuigao
+        from hangzhou group by leibie
+        having count(*)>500
+
+    </select>
+    <select id="getLeiWu" resultType="java.util.HashMap">
+        select leibie,count(*) as counts
+        from wuhan group by leibie
+        having counts>300
+    </select>
+    <select id="getGongWu" resultType="java.util.HashMap">
+        select leibie,avg(zuidi)as zuidi,Avg(zuigao)as zuigao
+        from wuhan group by leibie
+        having count(*)>500
+
+    </select>
+</mapper>
